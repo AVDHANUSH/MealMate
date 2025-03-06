@@ -186,14 +186,21 @@ def delete_res(request, id):
 
 
 def update_menu(request, id):
-    menu = Menu.objects.get(pk=id)  # Get the menu item or return 404 if not found
-
-    if request.method == 'POST':
-        form = MenuForm(request.POST, instance=menu)
+    menu_item =Menu.objects.get(pk=id)
+    if request.method == "POST":
+        form = MenuForm(request.POST, instance=menu_item)
         if form.is_valid():
             form.save()
-            return redirect('delivery:display_menu')  # Redirect to the menu list or another page
+            return redirect('delivery:view_menu', id=menu_item.res.id)  # Ensure redirect uses correct name
     else:
-        form = MenuForm(instance=menu)
+        form = MenuForm(instance=menu_item)
+    return render(request, 'delivery/update_menu.html', {'form': form, 'menu_item': menu_item})
 
-    return render(request, 'delivery/update_menu.html', {'form': form})
+
+
+
+
+def display_menu(request, username):
+    restaurants = Menu.objects.all()  
+    return render(request, 'delivery/menu.html', {'restaurants': restaurants})
+

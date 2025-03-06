@@ -23,6 +23,7 @@ urlpatterns = [
     path('update_res/<int:id>/', views.update_res, name='update_res'),
      path('delete_res/<int:id>/', views.delete_res, name='delete_res'),
     path('update_menu/<int:id>/', views.update_menu, name='update_menu'),
+    path('display_menu/<str:username>', views.display_menu, name='display_menu'),
 
 
 ]
