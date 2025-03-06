@@ -1,0 +1,21 @@
+<form method="POST">
+{% csrf_token %}
+
+<label>Restaurant Name:</label>
+{{ form.res_name }}
+<br><br>
+
+<label>Food Category:</label>
+{{ form.Food_cat }}
+<br><br>
+<label>Rating:</label>
+{{ form.rating }}
+<br><br>
+<label>Image:</label>
+{{ form.img }}
+<br><br>
+<label>Address:</label>
+{{ form.address }}
+<br><br>
+<button type="submit">Submit</button>
+</form>

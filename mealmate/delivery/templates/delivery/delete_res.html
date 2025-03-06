@@ -1,0 +1,11 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+  <h2>Confirm Deletion</h2>
+  <p>Are you sure you want to delete the restaurant "{{ res.res_name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+    <a href="{% url 'delivery:display_res' %}"><button type="button">Cancel</button></a>
+  </form>
+{% endblock %}
